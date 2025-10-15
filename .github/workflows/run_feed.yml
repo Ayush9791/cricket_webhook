@@ -1,12 +1,13 @@
 name: Cricket Live Feed
 
+# Run on manual trigger or schedule
 on:
+  workflow_dispatch:      # manual run
   schedule:
-    - cron: "*/30 * * * *"   # runs every 30 minutes
-  workflow_dispatch:          # allows manual run
+    - cron: "*/30 * * * *"  # runs every 30 minutes
 
 jobs:
-  run:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +22,11 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run script
+      - name: Run main.py
         env:
           API_KEY: ${{ secrets.API_KEY }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        run: python main.py
+        run: |
+          echo "Starting Cricket Live Feed script..."
+          python main.py
+          echo "Script finished successfully!"
