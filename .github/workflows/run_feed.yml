@@ -1,10 +1,10 @@
 name: Cricket Live Feed
 
-# Run on manual trigger or schedule
+# Run manually or every 30 minutes
 on:
-  workflow_dispatch:      # manual run
+  workflow_dispatch:   # manual run
   schedule:
-    - cron: "*/30 * * * *"  # runs every 30 minutes
+    - cron: "*/30 * * * *"  # every 30 minutes
 
 jobs:
   run-script:
@@ -27,6 +27,6 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         run: |
-          echo "Starting Cricket Live Feed script..."
+          echo "Starting Cricket Live Feed..."
           python main.py
-          echo "Script finished successfully!"
+          echo "Finished!"
