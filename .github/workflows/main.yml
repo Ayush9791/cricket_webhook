@@ -4,7 +4,7 @@ name: Cricket Live Feed
 on:
   workflow_dispatch:      # manual run
   schedule:
-    - cron: "* * * * *"  # runs every 30 minutes
+    - cron: "* * * * *"  # runs every minute
 
 jobs:
   run-script:
